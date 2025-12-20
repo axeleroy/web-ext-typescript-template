@@ -1,0 +1,44 @@
+{
+    "name": "gcal-to-ics",
+    "version": "1.0.0",
+    "description": "A Firefox extension that intercepts links that create new Google Calendar events and turns them into iCalendar files",
+    "type": "module",
+    "scripts": {
+        "test": "vitest",
+        "lint": "eslint",
+        "dev": "concurrently 'rollup -c --watch' 'cd src && web-ext run'",
+        "bundle": "rollup -c",
+        "build": "web-ext build --overwrite-dest --ignore-files *.ts --ignore-files *.svg -s src/",
+        "web-ext-lint": "web-ext lint -s src/"
+    },
+    "packageManager": "pnpm@10.24.0",
+    "devDependencies": {
+        "@eslint/compat": "^2.0.0",
+        "@eslint/js": "^9.39.2",
+        "@rollup/plugin-commonjs": "^29.0.0",
+        "@rollup/plugin-node-resolve": "^16.0.3",
+        "@rollup/plugin-typescript": "^12.3.0",
+        "@types/firefox-webext-browser": "^143.0.0",
+        "@types/node": "^24.10.4",
+        "concurrently": "^9.2.1",
+        "eslint": "^9.39.2",
+        "eslint-config-prettier": "^10.1.8",
+        "eslint-plugin-prettier": "^5.5.4",
+        "globals": "^16.5.0",
+        "husky": "^9.1.7",
+        "jiti": "^2.6.1",
+        "jsdom": "^27.3.0",
+        "lint-staged": "^16.2.7",
+        "prettier": "^3.7.4",
+        "rollup": "^4.53.5",
+        "typescript": "^5.9.3",
+        "typescript-eslint": "^8.49.0",
+        "vitest": "^4.0.16",
+        "web-ext": "^9.2.0"
+    },
+    "lint-staged": {
+        "**/*": "prettier --write --ignore-unknown"
+    },
+    "dependencies": {
+    }
+}

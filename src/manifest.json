@@ -1,0 +1,16 @@
+{
+    "name": "Web-Extension example",
+    "description": "An example web-extensions",
+    "manifest_version": 2,
+    "version": "1.0",
+    "permissions": ["webRequest", "*://example.com/*"],
+    "background": {
+        "scripts": ["background.js"]
+    },
+    "content_scripts": [
+        {
+            "matches": ["*://example.com/*"],
+            "js": ["content-script.js"]
+        }
+    ]
+}
