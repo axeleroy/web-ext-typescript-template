@@ -1,0 +1,9 @@
+{
+    "summary": {
+        "en-US": "A short sentence that explains what the extension does."
+    },
+    "categories": ["other"],
+    "version": {
+        "license": "MPL-2.0"
+    }
+}
