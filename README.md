@@ -12,7 +12,7 @@ A template for creating Web Extensions using TypeScript
   [Prettier](https://prettier.io/) and [lint-staged](https://www.npmjs.com/package/lint-staged) for linting.
 - A [continuous integration workflow](.github/workflows/ci.yml) that runs linting and tests.
 - A [workflow for publishing to addons.mozilla.org](.github/workflows/publish.yml) (AMO).
-- A [Renovate](https://docs.renovatebot.com/) config for staying up-to-date.
+- A [Renovate](https://docs.renovatebot.com/) config for keeping dependencies up-to-date.
 
 ## Getting started
 
@@ -71,15 +71,20 @@ This template comes with [a GitHub Action workflow](.github/workflows/publish.ym
 (AMO). It also automatically creates a GitHub release based on information from [manifest.json](src/manifest.json) and
 [metadata.json](metadata.json).
 
+> [!IMPORTANT]
+> Make sure that you add an 
+> [extension ID](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/manifest.json/browser_specific_settings#id)
+> in `manifest.json`, especially when publishing an update: otherwise AMO will reject it. 
+
 Beforehand, you must [create API keys](https://addons.mozilla.org/developers/addon/api/key/) and add them as 
 GitHub Action environment variables: `AMO_API_KEY` for the JWT issuer, and `AMO_API_SECRET` for the JWT secret.
 
 Then, publishing takes the following steps:
 1. Update the `version` number in [manifest.json](src/manifest.json).
 2. Update [metadata.json](metadata.json) following the [documentation](https://mozilla.github.io/addons-server/topics/api/addons.html#create).
-In the case of add-on updates, the only fields you have to fill are the ones already present in the base template, plus
+In the case of add-on updates, the only required fields are the ones already present in the base template, plus
 `version.release_notes`.
-   > [!INFO]
+   > [!IMPORTANT]
    > By default, the workflow is expecting a key for "en-GB" under `version.release_notes` to fill the GitHub release.
    > Make sure to update the workflow step "Get release notes" accordingly.
 3. Once set, manually run [the workflow](actions/workflows/publish.yml).
