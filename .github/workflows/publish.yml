@@ -47,3 +47,5 @@ jobs:
           tag_name: ${{ steps.get_version.outputs.version_name }}
           generate_release_notes: true
           body: "## Release notes\n${{ steps.get_release_notes.outputs.release_notes }}"
+          files: |
+              web-ext-artifacts/*.xpi
